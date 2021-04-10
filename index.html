@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DARKEST DUNGEON</title>
+    <link rel="stylesheet" href="css/style.css">
+    <title>THE DARKEST DUNGEON</title>   
+
+</head>
+
+<body>
+
+    <header>
+        <hgroup>
+            <h1>THE DARKEST DUNGEON</h1>
+            <h2></h2>
+            <h3 id=intro>Entra y lidera a un equipo de héroes imperfectos a través de enrevesados bosques, laberintos olvidados, criptas en ruinas y más allá.</h3> 
+        </hgroup>
+    </header>            
+    <section>               
+        <!--
+        <form name="chapters">
+            <input type="button" value="+" onclick="adelante()">
+            <img src="css/pj.css/iconos/foto1.png" width="80" id="foto">
+            <input type="button" value="-" onclick="atras()">
+        </form>
+        -->
+    </section>
+
+        <!--Sala de batalla  -->
+        <article class=battle>
+            <!--selector de heroes-->
+            <div id="selection">
+                 <div class="contenedorSelect">
+                    <div id="selectHero1"></div>
+                    <div id="selectHero2"></div>
+                    <div id="selectHero3"></div>
+                </div>
+                <div id="buttonCombat">
+                    <img id="imgCombat" src="assets/images/interface/iconos/announcement_combat.png" onclick="enemyAnimation('#esqEscuderoSkill1','esqueletoEscudero','skeleton_shield','animacion-skeleton-escudero-skill-1-body','skeleton_axe_animation','animacion-skeleton-escudero-skill-1-anim', `style= 'height: 420px'`);"><!--finalizarTurno()-->
+                </div>
+            </div> 
+            <div class="column-container">
+                <!--columnas de enemigos-->
+                <div style="margin-right:50px">
+                    <!--posicion 3-->
+                    <div id="enemy3" class='columnaN2' onclick="showContentEnemy(esqueletoArbalestero,'hpEnemy3',3, 'esqueletoArbalestero');">
+                        <img class='lenght' src="assets/images/otros/coas_sucubo.gif" alt="sucubo">                       
+                    </div>
+                    <!--posicion 2-->
+                    <div id="enemy2" class='columnaN2' onclick="showContentEnemy(esqueletoGuerrero, 'hpEnemy2',2, 'esqueletoGuerrero');">
+                        <img class='lenght' src="assets/images/otros/caos_campeon.gif" alt="caos">                       
+                    </div>
+                    <!--posicion 1-->
+                    <div id="enemy1" class='columnaN2' onclick="showContentEnemy(esqueletoEscudero,'hpEnemy1',1, 'esqueletoEscudero');">
+                        <img class='lenght' src="assets/images/otros/caos_entropico.gif" alt="entropia">                       
+                    </div>
+                    <div class="animacionEnemy"></div> <!--animaciones de ataque-->
+                    <div class="animacionEnemyEfecto"></div> <!--animaciones de ataque-->
+                </div>     
+                <!--columnas de heroes-->
+                <div style="margin-left: 50px;">
+                    <!--posicion 3-->
+                    <div id="position3" class='columnaN1' >
+                        <img class='lenght' src="assets/images/otros/sauro.gif" alt="">                     
+                    </div>
+                    <!--posicion 2-->
+                    <div id="position2" class='columnaN1' >
+                            <img class='lenght' src="assets/images/otros/barbara.gif" alt="barbara">                                       
+                    </div>
+                    <!--posicion 1-->
+                    <div id="position1" class='columnaN1'>
+                        <img class='lenght' title="Elfa Oscura" src="assets/images/otros/elfo_oscudo.gif" alt="elfa">                       
+                    </div>
+                    <div class="animacionHero"></div> <!--animaciones de ataque-->
+                    <div class="animacionHeroEfecto"></div> <!--animaciones de ataque-->
+                </div> 
+         
+            </div>
+        </article>
+        <!--  Tablas de habilidad y stats  -->
+        <div id="BattleStateAll">
+            <article class="battleStateBannerLeft">
+                <div id="bannerSide" class="banner"></div>
+                
+                <div id="infoHero" class="banner">
+                    <div id="statsHeroUp">
+                        <div id="portraitHero"></div> <!--retrado de heroe-->
+                        <div id="nameHero"></div>     <!--nombre de heroe-->
+                        <div id="skillCruzado" class="skillsHero">      <!--lista de hablidades-->
+                            <div id="skillCruzado1" onclick="cruzado.accionHero(cruzado,(dado(0,6)),skillAnimation('#cruzadoSkill1', 'cruzado', 'crusader_sword', 'animacion-crusado-skill-1', 'crusader_sword_animation', 'animacion-crusado-skill-1-anim'));"><img src="assets/images/chapters/cruzado/skills/cruzado.ability.one.png" alt=""></div>
+                            <div id="skillCruzado2" onclick="cruzado.accionHero(cruzado,(dado(0,6)),skillAnimation('#cruzadoSkill2', 'cruzado', 'crusader_scroll', 'animacion-crusado-skill-2-body', 'crusader_scroll_animation', 'animacion-crusado-skill-2-anim'));"><img src="assets/images/chapters/cruzado/skills/cruzado.ability.two.png" alt=""></div>
+                            <div id="skillCruzado3" onclick="cruzado.accionHero(cruzado,(dado(0,6)),skillAnimation('#cruzadoSkill3', 'cruzado', 'crusader_banner', 'animacion-crusado-skill-3-body', '', 'animacion-crusado-skill-1-anim', `style= 'height: 690px'`));"><img src="assets/images/chapters/cruzado/skills/cruzado.ability.three.png" alt=""></div>
+                        </div>
+                        <div id="skillBarbara" class="skillsHero">      <!--lista de hablidades-->
+                            <div id="skillBarbara1" onclick="barbara.accionHero(barbara,(dado(0,8)),skillAnimation('#barbaraSkill1', 'barbara', 'hellion_attack', 'animacion-barbara-skill-1-body', 'animacion_attack', 'animacion-barbara-skill-1-anim', `style= 'height: 390px'`));"><img src="assets/images/chapters/barbara/skills/barbara.ability.one.png" alt=""></div>
+                            <div id="skillBarbara2" onclick="barbara.accionHero(barbara,(dado(0,8)),skillAnimation('#barbaraSkill2', 'barbara', 'hellion_leap', 'animacion-barbara-skill-2-body', 'animacion_leap', 'animacion-barbara-skill-2-anim', `style= 'height: 590px'`));"><img src="assets/images/chapters/barbara/skills/barbara.ability.two.png" alt=""></div>
+                            <div id="skillBarbara3" onclick="barbara.accionHero(barbara,(dado(0,8)),skillAnimation('#barbaraSkill3', 'barbara', 'hellion_shout', 'animacion-barbara-skill-3-body', 'hellion_barbaric_shout', 'animacion-barbara-skill-3-anim', `style= 'height: 570px'`));"><img src="assets/images/chapters/barbara/skills/barbara.ability.three.png" alt=""></div>
+                        </div>
+                        <div id="skillArbalestera" class="skillsHero">
+                            <div id="skillArbalestera1" onclick="barbara.accionHero(barbara,(dado(0,8)),skillAnimation('#arbalesteraSkill1-a', 'arbalestera', 'arbalestera_shot', 'animacion-arbalestera-skill-1-body', '', 'animacion-arbalestera-skill-1-anim', `style= 'height: px'`));"><img src="assets/images/chapters/arbalestera/skills/arbalestera.ability.one.png" alt=""></div>
+                            <div id="skillArbalestera2" onclick="barbara.accionHero(barbara,(dado(0,8)),skillAnimation('#arbalesteraSkill2-a', 'arbalestera', 'arbalestera_artillery', 'animacion-arbalestera-skill-2-body', '', 'animacion-arbalestera-skill-2-anim', `style= 'height: 400px'`));"><img src="assets/images/chapters/arbalestera/skills/arbalestera.ability.two.png" alt=""></div>
+                            <div id="skillArbalestera3" onclick="barbara.accionHero(barbara,(dado(0,8)),skillAnimation('#arbalesteraSkill3', 'arbalestera', 'arbalestera_bandage', 'animacion-arbalestera-skill-3-body', '', 'animacion-arbalestera-skill-3-anim', `style= 'height: 400px'`));"><img src="assets/images/chapters/arbalestera/skills/arbalestera.ability.three.png" alt=""></div>         
+                        </div>
+                    </div>
+                    <div id="statsHeroDown"> <!--vida y equipo de heroe-->
+                        <div id="statsHero"></div>
+                        <div id="equip"></div>
+                
+                        <div id="trinkets"></div>
+                    </div>
+                </div>
+            </article>
+            <article class="battleStateBannerRight"> <!--tabla de contenido enemigo-->
+                <div id="statsEnemy" class="banner">
+                    <div id="statsEnemyUp">
+                        <div id="nameEnemy"></div>   <!--nombre de enemigo-->
+                        <div id="hpEnemy"></div>     <!--vida de enemigo-->
+                    </div>
+                    <div id="statsEnemyCenter">      <!--estadisticas-->
+                        <div id=""></div>
+                        <div id=""></div>
+                    </div>
+                    <div id="statsEnemyDown">        <!--habilidades de enemigo-->
+                        <div id=""></div>
+                        <div id=""></div>
+                    </div>
+                </div>
+                
+                <div id="bannerSide" class="banner"></div> 
+            </article>
+        </div>
+    <section class="audio-container">
+        <div class="audio-hero">
+            <div><!--audio-cruzado-->
+                <audio id="cruzadoSkill1" src="assets/audio/hero/cruzado/crusado_smite.wav"></audio>
+                <audio id="cruzadoSkill2" src="assets/audio/hero/cruzado/crusado_escrituras.wav"></audio>
+                <audio id="cruzadoSkill3" src="assets/audio/hero/cruzado/crusado_battleheal.wav"></audio>
+            </div>
+            <div><!--audio-barbara-->
+                <audio id="barbaraSkill1" src="assets/audio/hero/barbara/Wicked Hack.wav"></audio>
+                <audio id="barbaraSkill2" src="assets/audio/hero/barbara/Breakthrough.wav"></audio>
+                <audio id="barbaraSkill3" src="assets/audio/hero/barbara/Barbaric YAWP!.wav"></audio>
+            </div>
+            <div>
+                <audio id="arbalesteraSkill1-a" src="assets/audio/hero/arbalestera/sniper_shot.wav"></audio>
+                <audio id="arbalesteraSkill1-b" src="assets/audio/hero/arbalestera/sniper_shot_imp.wav"></audio>
+                <audio id="arbalesteraSkill2-a" src="assets/audio/hero/arbalestera/suppress.wav"></audio>
+                <audio id="arbalesteraSkill2-b" src="assets/audio/hero/arbalestera/suppress_imp.wav"></audio>
+                <audio id="arbalesteraSkill3" src="assets/audio/hero/arbalestera/bandage.wav"></audio>
+            </div>
+
+            <div>
+                <audio id="esqEscuderoSkill1" src="assets/audio/enemy/ruinas/esqueletoEscudero/sk_axestrike.wav"></audio>
+                <audio id="esqEscuderoSkill2" src="assets/audio/enemy/ruinas/esqueletoEscudero/sk_shieldbash.wav"></audio>
+            </div>
+            <div>
+                <audio id="esqGuerreroSkill1" src="assets/audio/enemy/ruinas/esqueletoGuerrero/sk_attack.wav"></audio>
+            </div>
+            <div>
+                <audio id="esqArbalesteroSkill1" src="assets/audio/enemy/ruinas/esqueletoArbalestero/sk_crossbowshot.wav"></audio>
+            </div>
+
+            <audio id="impactShield" src="assets/audio/hero/impact_shield.wav"></audio>
+            
+        </div>
+        <div class="audio-enemy">
+
+        </div>
+
+    </section>
+   <!-- -->
+  
+    <footer>
+        
+        <img src="assets/images/interface/RedHook.jpg" alt="">
+        Trabajo final Version n6.5
+        <a style="color:crimson"href="https://www.darkestdungeon.com/">Derechos reservados RedHook</a>
+    </footer>
+
+    <script type="text/javascript" src="jquery/Jquery.js"></script>
+    <script type="text/javascript" src="script/main.js"></script>
+    <script type="text/javascript" src="script/dom.js"></script>
+    <script type="text/javascript" src="script/pruebas.js"></script>
+
+</body>
+
+</html>
